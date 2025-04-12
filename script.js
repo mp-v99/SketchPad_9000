@@ -1,11 +1,14 @@
 const gridContainer = document.querySelector('#grid_container');
 
-setGridSize(3)
+setGrid(24, 'red');
 
-function setGridSize(squareSize) {
+function setGrid(squareSize, color) {
     addRows(squareSize);
     addColumns(squareSize);
-}
+    fillSquares(color);
+};
+
+// Draw grid logic:
 
 function addRows(squareSize) {  
     for (let i = 0; i < squareSize; i++) {
@@ -14,7 +17,7 @@ function addRows(squareSize) {
         divRow.classList.add(i);
         gridContainer.appendChild(divRow);
     }
-}
+};
 
 function addColumns(squareSize) {
     const divRow = document.querySelectorAll('.row');
@@ -26,4 +29,30 @@ function addColumns(squareSize) {
             row.appendChild(divSquare);  
         }
     })
-}
+};
+
+// Click and drag logic to fill the squares:
+
+let isDown = false;
+
+window.addEventListener('mousedown', () => {
+    isDown = true;
+})
+
+window.addEventListener('mouseup', () => {
+    isDown = false;
+})
+
+function fillSquares(color) {
+    const divSquare = document.querySelectorAll('.square'); 
+    divSquare.forEach(square => {
+        square.addEventListener('pointerdown', () => {
+            square.style.backgroundColor = color;
+        })
+        square.addEventListener('pointermove', () => {
+            if(isDown) {
+                square.style.backgroundColor = color; 
+            }
+        });
+    });
+};
