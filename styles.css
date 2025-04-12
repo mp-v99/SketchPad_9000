@@ -1,14 +1,72 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: sans-serif;
-  line-height: 1.6;
-  background-color: #fdfdfd;
-  color: #333;
+    font-family: sans-serif;
+    line-height: 1.6;
+    background-color: #333;
+    color: #efefef;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+#body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#header,
+#footer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#middle {
+    flex: 9;
+    display: flex;
+}
+
+#middle > div {
+    flex: 1;
+}
+
+#middle > #sketch_pad {
+    flex: 9;
+    display: flex;
+    border-radius: 2.5%;
+    border: #efefef solid 1px;
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#grid_container {
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid black;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+}
+
+
+.square {
+    flex: 1;
+    border: 0.5px solid black;
+    display: flex;
 }
