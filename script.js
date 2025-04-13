@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector('#grid_container');
 
-setGrid(24, 'red');
+setGrid(16, 'red');
 
 function setGrid(squareSize, color) {
     addRows(squareSize);
@@ -13,11 +13,13 @@ function setGrid(squareSize, color) {
 function addRows(squareSize) {  
     for (let i = 0; i < squareSize; i++) {
         const divRow = document.createElement('div');
-        divRow.classList.add('row');
-        divRow.classList.add(i);
+        divRow.classList.add('row');   
         gridContainer.appendChild(divRow);
+        let roundCorner = i + 1;
+        addRowRoundCorners(roundCorner, divRow, squareSize);
     }
 };
+
 
 function addColumns(squareSize) {
     const divRow = document.querySelectorAll('.row');
@@ -25,11 +27,37 @@ function addColumns(squareSize) {
         for (let i = 0; i < squareSize; i++){
             const divSquare = document.createElement('div');
             divSquare.classList.add(`square`);
-            divSquare.classList.add(i);
             row.appendChild(divSquare);  
+            let roundCorner = i + 1;
+            addSquareRoundCorners(roundCorner, divSquare, squareSize);
         }
     })
 };
+
+function addRowRoundCorners(roundCorner, item, squareSize) {
+    if (roundCorner === 1) {
+        item.classList.add(`row_0`);
+    }
+    else if (roundCorner === squareSize) {
+        item.classList.add(`row_15`);
+    }
+    else {
+        return;
+    }
+}
+
+function addSquareRoundCorners(roundCorner, item, squareSize) {
+    if (roundCorner === 1) {
+        item.classList.add(`square_0`); 
+    }
+    else if (roundCorner === squareSize) {
+        item.classList.add(`square_15`);
+    }
+    else {
+        return;
+    }
+}
+
 
 // Click and drag logic to fill the squares:
 
