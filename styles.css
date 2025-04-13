@@ -20,6 +20,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 }
 
 #header,
@@ -34,6 +35,7 @@ body {
 #middle {
     flex: 9;
     display: flex;
+    align-items: center;
 }
 
 #middle > div {
@@ -41,22 +43,36 @@ body {
 }
 
 #middle > #sketch_pad {
-    flex: 9;
     display: flex;
-    border-radius: 2.5%;
-    border: #efefef solid 1px;
-    padding: 5%;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 2rem;
+    align-items: center;
+    height: 700px;
+    min-width: 700px;
+    border: 1px solid #d22d2d;
+    background-color: #d22d2d;
+    padding: 1rem;
+    box-shadow: 0.2rem 0.4rem 0.4rem black,
+    -0.1rem -0.3rem 0.4rem black;
+}
+
+#sketch_pad h1 {
+    color: #f3da4b;
 }
 
 #grid_container {
-    height: 600px;
-    width: 600px;
     display: flex;
     flex-direction: column;
-    border: 0.5px solid black;
+    background-color: #e8dfcf;
+    height: 515px;
+    width: 515px;
+    border-radius: 1rem;
+    border: black solid 3px;
+    box-shadow: inset 0.5rem 0.5rem 1rem black,
+    inset -2px -2px 1rem black,
+    -3px -2px 4px #e8dfcf,
+    2px 3px 4px #e8dfcf;
 }
 
 .row {
@@ -67,6 +83,22 @@ body {
 
 .square {
     flex: 1;
-    border: 0.5px solid black;
+    border: 0.2px solid #410d0d;
     display: flex;
+}
+
+.row_0 > .square_0 {
+    border-top-left-radius: 0.9rem;
+}
+
+.row_0 > .square_15 {
+    border-top-right-radius: 0.9rem;
+}
+
+.row_15 > .square_0 {
+    border-bottom-left-radius: 0.9rem;
+}
+
+.row_15 > .square_15 {
+    border-bottom-right-radius: 0.9rem;
 }
