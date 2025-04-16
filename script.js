@@ -1,11 +1,16 @@
 const gridContainer = document.querySelector('#grid_container');
+const knobPointer = document.querySelector('#knob_pointer');
+const knobRange = document.querySelector('#knob_range');
 
-setGrid(16, 'red');
 
-function setGrid(squareSize, color) {
+
+
+
+
+function setGridResolution(squareSize) {
     addRows(squareSize);
     addColumns(squareSize);
-    fillSquares(color);
+    fillSquares('black');
 };
 
 // Draw grid logic:
@@ -84,3 +89,43 @@ function fillSquares(color) {
         });
     });
 };
+
+// Define input dragging logic
+
+
+
+knobRange.addEventListener('input', () => {
+    gridContainer.innerHTML = '';
+    const value = parseInt(knobRange.value);
+    setGridResolution(value);
+    dragKnob();
+});
+
+let knobRangeEvent = new Event('input', [knobRange.value = 16]);
+
+knobRange.dispatchEvent(knobRangeEvent);
+
+
+// Define knobPointer position according to input position
+
+function dragKnob() {
+    const min = parseInt(knobRange.min);
+    const max = parseInt(knobRange.max);
+    const value = parseInt(knobRange.value);
+
+    const percent = (value - min) / (max - min);
+
+    const angle = Math.PI - (Math.PI * percent);
+
+    const radius = 25;
+
+    const centerX = 32;
+    const centerY = 32;
+
+    const x = centerX + Math.cos(angle) * radius;
+    const y = centerY - Math.sin(angle) * radius;
+
+    knobPointer.style.left =  `${x}px`;
+    knobPointer.style.top = `${y}px`
+    
+ }
