@@ -222,18 +222,22 @@ body {
     inset -1px -1px 1rem black,
     -1px -1px 1px #e8dfcf,
     1px 1px 1px #e8dfcf;
-    height: 5.8rem;
+    height: 6.5rem;
     width: 10rem;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    justify-content: center;
   }
 
   #menu_group_one,
   #menu_group_two {
     flex: 1;
     display: flex;
-    gap: 2px;
+    gap: 3px;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   .menu > button {
